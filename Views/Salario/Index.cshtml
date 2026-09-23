@@ -1,0 +1,41 @@
+﻿@model LaboratorioMVC.Models.Empleado
+
+@{
+    ViewBag.Title = "Cálculo del Salario";
+}
+
+<h2>Cálculo del Salario</h2>
+
+@using (Html.BeginForm("Index", "Salario", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(m => m.CostoPorHora, "Costo por hora:")
+        @Html.TextBoxFor(m => m.CostoPorHora, new { type = "number", step = "0.01" })
+    </div>
+
+    <br />
+
+    <div>
+        @Html.LabelFor(m => m.HorasTrabajadas, "Horas trabajadas por día:")
+        @Html.TextBoxFor(m => m.HorasTrabajadas, new { type = "number", step = "0.01" })
+    </div>
+
+    <br />
+
+    <div>
+        @Html.LabelFor(m => m.DiasTrabajados, "Días trabajados en la semana:")
+        @Html.TextBoxFor(m => m.DiasTrabajados, new { type = "number" })
+    </div>
+
+    <br />
+
+    <input type="submit" value="Calcular" />
+}
+
+@if (ViewBag.Salario != null)
+{
+    <h3>
+        Salario total:
+        @String.Format("{0:C}", ViewBag.Salario)
+    </h3>
+}

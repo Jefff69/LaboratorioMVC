@@ -1,0 +1,40 @@
+﻿@model LaboratorioMVC.Models.NumeroPar
+
+@{
+    ViewBag.Title = "Verificación de Números Pares";
+}
+
+<h2>Verificación de Números Pares</h2>
+
+@using (Html.BeginForm("Index", "NumeroPar", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(m => m.Numero, "Ingrese un número:")
+
+        @Html.TextBoxFor(m => m.Numero, new
+        {
+            type = "number"
+        })
+    </div>
+
+    <br />
+
+    <input type="submit" value="Calcular" />
+}
+
+@if (ViewBag.Verificado != null && ViewBag.Verificado == true)
+{
+    <hr />
+
+    <h3>Resultado:</h3>
+
+    <div>
+        <input type="checkbox"
+               @(Model.EsPar ? "checked" : "")
+               disabled="disabled" />
+
+        <label>
+            @(Model.EsPar ? "Es par" : "No es par")
+        </label>
+    </div>
+}

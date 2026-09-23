@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Laboratorio MVC";
+}
+
+<div class="jumbotron text-center">
+    <h1>Laboratorio MVC</h1>
+
+    <p class="lead">
+        Implementación de MVC con tres controladores
+    </p>
+
+    <p>
+        Bienvenido al menú principal de la práctica.
+    </p>
+</div>
+
+<div class="row">
+
+    <!-- Opción 1: Cálculo del salario -->
+    <div class="col-md-4 text-center">
+        <h2>💰 Salario</h2>
+
+        <p>
+            Calcule el salario semanal de un empleado
+            según sus horas y días trabajados.
+        </p>
+
+        @Html.ActionLink(
+            "Ir al cálculo",
+            "Index",
+            "Salario",
+            null,
+            new { @class = "btn btn-primary" }
+        )
+    </div>
+
+    <!-- Opción 2: Día de la semana -->
+    <div class="col-md-4 text-center">
+        <h2>📅 Día de la semana</h2>
+
+        <p>
+            Identifique el día de la semana
+            utilizando un número del 1 al 7.
+        </p>
+
+        @Html.ActionLink(
+            "Ir al ejercicio",
+            "Index",
+            "DiaSemana",
+            null,
+            new { @class = "btn btn-success" }
+        )
+    </div>
+
+    <!-- Opción 3: Número par -->
+    <div class="col-md-4 text-center">
+        <h2>🔢 Número par</h2>
+
+        <p>
+            Verifique si un número es par o impar.
+        </p>
+
+        @Html.ActionLink(
+            "Ir al ejercicio",
+            "Index",
+            "NumeroPar",
+            null,
+            new { @class = "btn btn-warning" }
+        )
+    </div>
+
+</div>

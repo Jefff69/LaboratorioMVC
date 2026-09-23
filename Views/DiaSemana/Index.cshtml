@@ -1,0 +1,66 @@
+﻿@model LaboratorioMVC.Models.DiaSemana
+
+@{
+    ViewBag.Title = "Día de la Semana";
+}
+
+<h2>Identificación del Día de la Semana</h2>
+
+@using (Html.BeginForm("Index", "DiaSemana", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(m => m.NumeroDia, "Ingrese un número del 1 al 7:")
+
+        @Html.TextBoxFor(m => m.NumeroDia, new
+        {
+            type = "number",
+            min = "1",
+            max = "7"
+        })
+    </div>
+
+    <br />
+
+    <input type="submit" value="Calcular" />
+}
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div>
+        @Html.ValidationSummary()
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(Model.NombreDia))
+{
+    <h3>Día identificado: @Model.NombreDia</h3>
+}
+
+<hr />
+
+<h3>Seleccione el día:</h3>
+
+@{
+    var dias = new[]
+    {
+        new { Numero = 1, Nombre = "Lunes" },
+        new { Numero = 2, Nombre = "Martes" },
+        new { Numero = 3, Nombre = "Miércoles" },
+        new { Numero = 4, Nombre = "Jueves" },
+        new { Numero = 5, Nombre = "Viernes" },
+        new { Numero = 6, Nombre = "Sábado" },
+        new { Numero = 7, Nombre = "Domingo" }
+    };
+}
+
+@foreach (var dia in dias)
+{
+    <div>
+        <input type="radio"
+               name="diaSeleccionado"
+               value="@dia.Numero"
+               @(Model.NumeroDia == dia.Numero ? "checked" : "") />
+
+        <label>@dia.Nombre</label>
+    </div>
+}
